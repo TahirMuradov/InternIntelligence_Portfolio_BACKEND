@@ -1,21 +1,20 @@
+using Bussines.DependencyResolver;
 using Bussines.Filters;
+using Bussines.FluentValidations.AuthDTOs;
+using Core.Helpers;
 using DataAccess.DBContext;
 using Entities;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Globalization;
 using System.Security.Claims;
-using FluentValidation.AspNetCore;
 using System.Text;
 using System.Threading.RateLimiting;
-using Bussines.FluentValidations.AuthDTOs;
-using System.Globalization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.OpenApi.Models;
-using Bussines.DependencyResolver;
-using Core.Helpers;
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationHelper.Initialize(builder.Configuration);
 // Add services to the container.

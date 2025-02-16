@@ -10,6 +10,12 @@ namespace DataAccess.DBContext
         {
         }
 
+        public DbSet<Main> Mains { get; set; }
+        public DbSet<AboutMe> AboutMes { get; set; }
+        public DbSet<Skill> Skills { get; set; }    
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<CotactMe> CotactMes { get; set; }
+
 
 
 
