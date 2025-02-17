@@ -155,6 +155,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowSpecificOrigin");
+app.UseRateLimiter();
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseAuthentication();
