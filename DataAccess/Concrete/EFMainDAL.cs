@@ -71,17 +71,17 @@ namespace DataAccess.Concrete
 
         }
 
-        public IDataResult<GetMainDTO> GetMainForTable()
+        public IDataResult<GetMainDetailDTO> GetMainForTable()
         {
 
-            GetMainDTO getMain = _dBContext.Mains.AsNoTracking().Select(x => new GetMainDTO
+            GetMainDetailDTO getMain = _dBContext.Mains.AsNoTracking().Select(x => new GetMainDetailDTO
             {
                 Id = x.Id,
                 Title = x.Title,
                 Description = x.Description,
             }).FirstOrDefault();
             
-            return new SuccessDataResult<GetMainDTO>(data: getMain, HttpStatusCode.OK);
+            return new SuccessDataResult<GetMainDetailDTO>(data: getMain, HttpStatusCode.OK);
 
         }
     }

@@ -48,5 +48,36 @@ namespace Core.Helpers.EmailHelper.Concrete
                 return new ErrorResult(message: ex.Message, statusCode: HttpStatusCode.BadRequest);
             }
         }
+
+        public async Task<IResult> SendEmailForContactMe(string Email, string message, string Name, DateTime CreatedDate)
+        {
+            try
+            {
+                string htmlBody2 = $"{Name} tərəfindən mesaj əlavə olundu.Əlavə edən şəxsin elektron poçtu {Email} ,yazilma tarixi ${CreatedDate.ToString("dd.MM.yyyy HH:mm")} ,mesaj məzmunu " +
+                    $"{message} ";
+                var email = new MimeMessage();
+                email.From.Add(new MailboxAddress(_configuration["EmailServices:FromName"], _configuration["EmailServices:FromEmail"]));
+                email.To.Add(new MailboxAddress(_configuration["EmailServices:FromName"], _configuration["EmailServices:FromEmail"]));
+                email.Importance = MessageImportance.High;
+                email.Subject = "Added Contact Me";
+
+                email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = htmlBody2 };
+
+                using (var smtp = new SmtpClient())
+                {
+
+                    await smtp.ConnectAsync(_configuration["EmailServices:ServiceName"], Convert.ToInt32(_configuration["EmailServices:ServicePort"]), MailKit.Security.SecureSocketOptions.StartTls);
+                    await smtp.AuthenticateAsync(_configuration["EmailServices:FromEmail"], _configuration["EmailServices:FromEmailPassword"]);
+                    await smtp.SendAsync(email);
+                    await smtp.DisconnectAsync(true);
+                }
+                return new SuccessResult(statusCode: HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+
+                return new ErrorResult(message: ex.Message, statusCode: HttpStatusCode.BadRequest);
+            }
+        }
     }
 }

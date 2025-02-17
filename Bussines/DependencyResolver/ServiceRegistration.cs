@@ -23,6 +23,14 @@ namespace Bussines.DependencyResolver
             services.AddScoped<IMainDAL, EFMainDAL>();
             services.AddScoped<IAboutMeDAL, EFAboutDAL>();
             services.AddScoped<IAboutMeService, AboutMeManager>();
+            services.AddScoped<IEducationService, EducationManager>();
+            services.AddScoped<IEducationDAL, EFEducationDAL>();
+            services.AddScoped<IProjectDAL, EFProjectDAL>();
+            services.AddScoped<IProjectService, ProjectManager>();
+            services.AddScoped<ISkillDAL, EFSkillDAL>();
+            services.AddScoped<ISkillService, SkillManager>();
+            services.AddScoped<IContactMeDAL, EFContactMeDAL>();
+            services.AddScoped<IContactMeService, ContactMeManager>();
         }
     }
 }

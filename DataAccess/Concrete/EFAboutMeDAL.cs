@@ -56,9 +56,9 @@ namespace DataAccess.Concrete
             return new SuccessResult(HttpStatusCode.OK);
         }
 
-        public IDataResult<GetAboutMeForTableDTO> GetAboutMeForTable()
+        public IDataResult<GetAboutMeDetailDTO> GetAboutMeForTable()
         {
-            GetAboutMeForTableDTO aboutme = _dBContext.AboutMes.AsNoTracking().Select(x => new GetAboutMeForTableDTO
+            GetAboutMeDetailDTO aboutme = _dBContext.AboutMes.AsNoTracking().Select(x => new GetAboutMeDetailDTO
             {
                 Id = x.Id,
                 Adress = x.Adress,
@@ -72,7 +72,7 @@ namespace DataAccess.Concrete
                 PhotoUrl = x.PhotoUrl,
 
             }).FirstOrDefault();
-            return new SuccessDataResult<GetAboutMeForTableDTO>(aboutme, HttpStatusCode.OK);
+            return new SuccessDataResult<GetAboutMeDetailDTO>(aboutme, HttpStatusCode.OK);
         }
 
         public IDataResult<GetAboutMeForUIDTO> GetAboutMeForUI()

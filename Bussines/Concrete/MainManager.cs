@@ -51,7 +51,7 @@ namespace Bussines.Concrete
 
         }
 
-        public IDataResult<GetMainDTO> GetMainForTable()
+        public IDataResult<GetMainDetailDTO> GetMainForTable()
         {
             return _mainDAL.GetMainForTable();
         }

@@ -10,6 +10,6 @@ namespace Bussines.Abstarct
         public IResult UpdateMain(UpdateMainDTO updateMainDTO);
 
         public IDataResult<GetMainForUIDTO> GetMainForUI();
-        public IDataResult<GetMainDTO> GetMainForTable();
+        public IDataResult<GetMainDetailDTO> GetMainForTable();
     }
 }

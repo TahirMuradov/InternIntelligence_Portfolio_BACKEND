@@ -8,7 +8,7 @@ namespace Bussines.Abstarct
         public Task<IResult> AddAboutMeAsync(AddAboutMeDTO addAboutMeDTO);
         public IResult DeleteAboutMe(Guid AboutMeId);
         public Task<IResult> UpdateAboutMeAsync(UpdateAboutMeDTO updateAboutMeDTO);
-        public IDataResult<GetAboutMeForTableDTO> GetAboutMeForTable();
+        public IDataResult<GetAboutMeDetailDTO> GetAboutMeForTable();
         public IDataResult<GetAboutMeForUIDTO> GetAboutMeForUI();
 
     }

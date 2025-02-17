@@ -15,6 +15,7 @@ namespace DataAccess.DBContext
         public DbSet<Skill> Skills { get; set; }    
         public DbSet<Education> Educations { get; set; }
         public DbSet<CotactMe> CotactMes { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
 
 

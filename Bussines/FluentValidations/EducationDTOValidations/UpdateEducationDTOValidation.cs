@@ -1,0 +1,26 @@
+﻿using Entities.DTOs.EducationDTOs;
+using FluentValidation;
+
+namespace Bussines.FluentValidations.EducationDTOValidations
+{
+    class UpdateEducationDTOValidation:AbstractValidator<UpdateEducationDTO>
+    {
+        public UpdateEducationDTOValidation()
+        {
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("Id cannot be empty.");
+            RuleFor(x => x.EducationName)
+               .NotEmpty().WithMessage("Education name cannot be empty.");
+
+            RuleFor(x => x.StartDate)
+                .NotEmpty().WithMessage("Start date is required.");
+
+            RuleFor(x => x.EndDate)
+                .NotEmpty().WithMessage("End date is required.")
+                .GreaterThan(x => x.StartDate).WithMessage("End date must be greater than start date.");
+
+            RuleFor(x => x.Description)
+                .NotEmpty().WithMessage("Description cannot be empty.");
+        }
+    }
+}

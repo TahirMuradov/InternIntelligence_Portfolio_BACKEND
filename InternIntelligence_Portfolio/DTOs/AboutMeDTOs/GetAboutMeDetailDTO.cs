@@ -1,6 +1,6 @@
 ﻿namespace Entities.DTOs.AboutMeDTOs
 {
-  public  class GetAboutMeForTableDTO
+  public  class GetAboutMeDetailDTO
     {
         public Guid Id { get; set; }
         public string Description { get; set; }

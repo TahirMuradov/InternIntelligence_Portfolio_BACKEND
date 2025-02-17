@@ -33,7 +33,7 @@ namespace Bussines.Concrete
             return _aboutMeDAL.DeleteAboutMe(AboutMeId);
         }
 
-        public IDataResult<GetAboutMeForTableDTO> GetAboutMeForTable()
+        public IDataResult<GetAboutMeDetailDTO> GetAboutMeForTable()
         {
             return _aboutMeDAL.GetAboutMeForTable();
         }
