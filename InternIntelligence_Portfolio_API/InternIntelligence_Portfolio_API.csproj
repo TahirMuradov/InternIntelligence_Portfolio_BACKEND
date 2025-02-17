@@ -26,4 +26,8 @@
     <ProjectReference Include="..\InternIntelligence_Portfolio\Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>

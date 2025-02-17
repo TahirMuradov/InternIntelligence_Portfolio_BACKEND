@@ -9,6 +9,7 @@ namespace InternIntelligence_Portfolio_API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableRateLimiting("Fixed")]
+    
     public class MainController : ControllerBase
     {
         private readonly IMainService _mainService;
@@ -41,6 +42,7 @@ namespace InternIntelligence_Portfolio_API.Controllers
         }
     
         [HttpGet("[action]")]
+       
         public IActionResult GetMainForUI()
         {
             
@@ -48,6 +50,7 @@ namespace InternIntelligence_Portfolio_API.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
         [HttpGet("[action]")]
+        [Authorize]
         public IActionResult GetMainForTable()
         {
 

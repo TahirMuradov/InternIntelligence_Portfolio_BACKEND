@@ -34,10 +34,16 @@ namespace Bussines.FluentValidations.AboutMeDTOValidations
                 .EmailAddress().WithMessage("Invalid email format.");
 
             RuleFor(x => x.Photo)
-                .NotNull().WithMessage("Photo is required.");
+                   .NotNull().WithMessage("Photo is required.")
+                   .Must(file => file != null && (
+                       file.ContentType.Equals("image/jpeg") ||
+                       file.ContentType.Equals("image/png")))
+                   .WithMessage("Only .jpg, .jpeg, and .png files are allowed for the photo.");
 
             RuleFor(x => x.Cv)
-                .NotNull().WithMessage("CV is required.");
+                .NotNull().WithMessage("CV is required.")
+                .Must(file => file != null && file.ContentType.Equals("application/pdf"))
+                .WithMessage("Only .pdf files are allowed for the CV.");
         }
     }
 }
