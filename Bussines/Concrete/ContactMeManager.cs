@@ -27,6 +27,13 @@ namespace Bussines.Concrete
             return _contactDAL.AddContactMe(addContactMeDTO);
         }
 
+        public IResult ChangeStatus(Guid id)
+        {
+            if (id == Guid.Empty)
+                return new ErrorResult("Id cannot be empty", HttpStatusCode.BadRequest);
+            return _contactDAL.ChangeStatus(id);
+        }
+
         public IResult DeleteContactMe(Guid ContactMeId)
         {
             if (ContactMeId == Guid.Empty)
@@ -44,6 +51,11 @@ namespace Bussines.Concrete
             if (page < 1)
                 page = 1;
             return _contactDAL.GetContactMeForTable(page);
+        }
+
+        public IDataResult<int> GetCountNewContactMe()
+        {
+            return _contactDAL.GetCountNewContactMe();
         }
     }
 

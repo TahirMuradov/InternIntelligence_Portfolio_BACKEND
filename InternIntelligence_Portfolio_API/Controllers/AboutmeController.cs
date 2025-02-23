@@ -1,17 +1,15 @@
 ﻿using Bussines.Abstarct;
 using Entities.DTOs.AboutMeDTOs;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using System.Threading.Tasks;
 
 namespace InternIntelligence_Portfolio_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [EnableRateLimiting("Fixed")]
-    
+
     public class AboutmeController : ControllerBase
     {
         private readonly IAboutMeService _aboutMeService;
@@ -52,6 +50,8 @@ namespace InternIntelligence_Portfolio_API.Controllers
         [Authorize]
         public IActionResult GetAboutMeForTable()
         {
+
+
             var result = _aboutMeService.GetAboutMeForTable();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }

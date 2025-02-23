@@ -16,6 +16,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.RateLimiting;
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("http://localhost:5003", "https://localhost:7173");
 ConfigurationHelper.Initialize(builder.Configuration);
 // Add services to the container.
 builder.Services.AddControllers();

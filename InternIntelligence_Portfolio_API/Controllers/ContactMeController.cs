@@ -31,11 +31,25 @@ namespace InternIntelligence_Portfolio_API.Controllers
             var result = _contactMeService.GetContactMeForAlert();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+        [HttpPut("[action]")]
+        [Authorize]
+        public IActionResult ChangeStatusContactMe([FromQuery] Guid Id)
+        {
+            var result = _contactMeService.ChangeStatus(Id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
         [HttpDelete("[action]")]
         [Authorize]
         public IActionResult DeleteContactMe([FromQuery] Guid id)
         {
             var result = _contactMeService.DeleteContactMe(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+        [HttpGet("[action]")]
+        [Authorize]
+        public IActionResult GetCountNewContactMe()
+        {
+            var result = _contactMeService.GetCountNewContactMe();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
         [HttpPost("[action]")]

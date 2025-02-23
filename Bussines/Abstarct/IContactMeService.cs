@@ -8,7 +8,8 @@ namespace Bussines.Abstarct
     {
         public IResult AddContactMe(AddContactMeDTO addContactMeDTO);
         public IResult DeleteContactMe(Guid ContactMeId);
-
+        public IResult ChangeStatus(Guid id);
+        public IDataResult<int> GetCountNewContactMe();
         public IDataResult<PaginatedList<GetContactMeForTableDTO>> GetContactMeForTable(int page);
 
         public IDataResult<IQueryable<GetContactMeForAlertDTO>> GetContactMeForAlert();

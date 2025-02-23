@@ -31,7 +31,7 @@ namespace InternIntelligence_Portfolio_API.Controllers
             var result = _projectService.DeleteProject(id);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
-        [HttpDelete("[action]")]
+        [HttpPut("[action]")]
         [Authorize]
         public IActionResult UpdateProject([FromBody] UpdateProjectDTO updateProjectDTO)
         {

@@ -23,6 +23,16 @@ namespace DataAccess.Concrete
 
         public async Task<IResult> AddAboutMeAsync(AddAboutMeDTO addAboutMeDTO)
         {
+
+            AboutMe aboutMeCheck = _dBContext.AboutMes.FirstOrDefault();
+            if (aboutMeCheck is not null){
+                FileHelper.RemoveFile(aboutMeCheck.PhotoUrl);
+                FileHelper.RemoveFile(aboutMeCheck.CvUrl);
+                _dBContext.AboutMes.Remove(aboutMeCheck);
+
+            }
+
+
             string photoUrl = await FileHelper.SaveFileAsync(addAboutMeDTO.Photo);
             string cvUrl = await FileHelper.SaveFileAsync(addAboutMeDTO.Cv);
 

@@ -44,6 +44,17 @@ namespace DataAccess.Concrete
             return new SuccessResult(HttpStatusCode.OK);
         }
 
+        public IResult ChangeStatus(Guid id)
+        {
+            CotactMe cotactMe = _dBContext.CotactMes.FirstOrDefault(x => x.Id == id);
+            if (cotactMe is null)
+                return new ErrorResult("ContactMe not found", HttpStatusCode.NotFound);
+            cotactMe.IsRead = true;
+            _dBContext.Update(cotactMe);
+            _dBContext.SaveChanges();
+            return new SuccessResult(HttpStatusCode.OK);
+        }
+
         public IResult DeleteContactMe(Guid ContactMeId)
         {
             CotactMe cotactMe = _dBContext.CotactMes.FirstOrDefault(x => x.Id == ContactMeId);
@@ -79,6 +90,10 @@ namespace DataAccess.Concrete
             return new SuccessDataResult<PaginatedList<GetContactMeForTableDTO>>(PaginatedList<GetContactMeForTableDTO>.Create(query, page, 10), HttpStatusCode.OK);
         }
 
-     
+        public IDataResult<int> GetCountNewContactMe()
+        {
+           int count = _dBContext.CotactMes.Count(x => x.IsRead == false);
+            return new SuccessDataResult<int>(count, HttpStatusCode.OK);
+        }
     }
 }

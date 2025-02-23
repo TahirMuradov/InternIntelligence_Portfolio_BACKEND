@@ -22,7 +22,7 @@ namespace InternIntelligence_Portfolio_API.Controllers
         [Authorize]
         public IActionResult AddMain([FromBody] AddMainDTO addMainDTO)
         {
-            var result=_mainService.AddMain(addMainDTO);    
+                var result=_mainService.AddMain(addMainDTO);    
             return result.IsSuccess?Ok(result):BadRequest(result);
         }
         [HttpDelete("[action]")]
