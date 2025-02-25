@@ -31,6 +31,8 @@ namespace Bussines.DependencyResolver
             services.AddScoped<ISkillService, SkillManager>();
             services.AddScoped<IContactMeDAL, EFContactMeDAL>();
             services.AddScoped<IContactMeService, ContactMeManager>();
+            services.AddScoped<IHomeDAL, EFHomeDAL>();
+            services.AddScoped<IHomeService, HomeManager>();
         }
     }
 }
