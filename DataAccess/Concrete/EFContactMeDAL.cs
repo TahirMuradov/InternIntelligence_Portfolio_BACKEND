@@ -33,7 +33,7 @@ namespace DataAccess.Concrete
               Email = addContactMeDTO.Email,
               Message = addContactMeDTO.Message,
               Name = addContactMeDTO.Name,
-              CreatedDate = DateTime.UtcNow,
+              CreatedDate = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss")),
               IsRead = false
           };
            
