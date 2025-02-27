@@ -19,7 +19,7 @@ namespace Bussines.FluentValidations.AboutMeDTOValidations
 
             RuleFor(x => x.BirthDay)
                 .NotEmpty().WithMessage("Birth date cannot be empty.")
-                .GreaterThan(DateTime.Today).WithMessage("Birth date must be after today.");
+            .LessThanOrEqualTo(DateTime.Today).WithMessage("Birth date cannot be in the future.");
 
             RuleFor(x => x.Nationality)
                 .NotEmpty().WithMessage("Nationality cannot be empty.");
